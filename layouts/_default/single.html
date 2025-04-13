@@ -1,4 +1,9 @@
 {{ define "main" }}
 
+{{ $image := partial "funcGetOgpImage.html" .}}
+<h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+<img src="{{ $image }}" alt="{{ .Title }}" class="ogp-image" width="600" />
+
 {{ partial "func.html" . }}
+
 {{ end }}

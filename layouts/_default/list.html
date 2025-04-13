@@ -1,7 +1,7 @@
 {{ define "main" }}
 {{ range .Pages }}
 <article>
-  {{ $image := partial "funcGetOgpImage.html" .}}
+  {{ $image := partial "funcGetOgpImage.html" . }}
   <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
   <p>{{ .Summary }}</p>
   <img src="{{ $image }}" alt="{{ .Title }}" class="ogp-image" width="600" />
