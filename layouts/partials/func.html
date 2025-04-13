@@ -1,0 +1,86 @@
+
+{{ $title := "" }}
+
+{{/* 英単語の前後にスペースを付加 */}}
+{{ $title = replaceRE `([\p{Han}\p{Hiragana}\p{Katakana}])([a-zA-Z])` "$1\t$2" .Title }}
+{{ $title = replaceRE `([a-zA-Z])([\p{Han}\p{Hiragana}\p{Katakana}])` "$1\t$2" $title }}
+
+<h2>半角スペースを付与</h2>
+<p> {{ $title }}</p>
+
+{{ $words := split $title "\t"}}
+{{ len $words }}
+
+{{ range $index, $word := $words }}
+    <p>{{ $index}}行目: {{ $word }}</p>
+{{ end }}
+
+
+<h2>英単語ならばそのまま、そうでなければ分解</h2>
+
+{{ range $index, $word := $words }}
+    {{ if findRE "[a-zA-Z]" $word }}
+        <p>{{ $index}}行目: {{ $word }}</p>
+    {{ else }}
+        <p>{{ $index}}行目: {{ split $word "" }}</p>
+    {{ end }}
+{{ end }}
+
+
+<h2>最大文字数まで詰めこむ</h2>
+
+{{ $maxLength := 20 }}
+{{ $lines := slice }}
+
+{{ $currentLine := "" }}
+{{ $count := 0 }}
+
+{{ range $index, $word := $words }}
+    {{ $w := slice }}
+    {{ if findRE "[a-zA-Z]" $word }}
+        {{ $w = slice $word }}
+    {{ else }}
+        {{ $w = split $word "" }}
+    {{ end }}
+    <p>{{ $index}}: {{ $w }} lines: {{ $lines }}</p>
+
+    {{ range $i, $s := $w}}
+        {{ if (le (add $count (strings.RuneCount $s)) $maxLength) }}
+            {{ $currentLine = printf "%s%s" $currentLine $s }}
+            {{ $count = add $count (strings.RuneCount $s) }}
+            <p>文字数:{{$count}} currentLine:{{ $currentLine }} lines: {{$lines}}</p>
+        {{ else }}
+            <p>{{ $count}}行目: {{ $currentLine }}</p>
+            <p>add</p>
+            {{ $lines = $lines | append $currentLine }}
+            {{ $count = strings.RuneCount $s }}
+            {{ $currentLine = $s }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+
+{{ if ne $currentLine "" }}
+    {{ $lines = $lines | append $currentLine }}
+{{ end }}
+
+<div>{{ delimit $lines "\n"}}</div>
+
+
+<h2>文字のカウント</h2>
+
+{{ $str := "あいうえおabcde" }}
+{{ strings.RuneCount $str }}
+{{ $str | strings.Count  "" }}
+
+
+{{ $count := 0 }}
+
+{{ range $i, $char := split $str "" }}
+    {{ if findRE `[\p{Han}\p{Hiragana}\p{Katakana}]` $char }}
+        {{ $count = add $count 2 }}
+    {{ else if findRE `[a-zA-Z0-9]` $char }}
+        {{ $count = add $count 1 }}
+    {{ end }}
+{{ end }}
+
+<p>合計文字数: {{ $count }}</p>
