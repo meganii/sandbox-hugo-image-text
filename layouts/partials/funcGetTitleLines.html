@@ -11,7 +11,7 @@
   {{ $chunks := partial "funcSplitChunk.html" (dict "Word" $word) }}
   {{ range $chunks }}
     {{ $chunk := . }}
-    {{ $count := partial "funcCount.html" $chunk }}
+    {{ $count := partial "funcCountChars.html" $chunk }}
     {{ if le (add $currentLength $count) $maxLength }}
       {{ $currentLine = printf "%s%s" $currentLine $chunk }}
       {{ $currentLength = add $currentLength $count }}

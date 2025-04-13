@@ -1,12 +1,19 @@
 
 {{ $title := "" }}
 
-<h2>1. TABを付与</h2>
+<h2>文字のカウント</h2>
+
+{{ $count := partial "funcCountChars.html" .Title }}
+<p>タイトルの文字数: {{ $count }}</p>
+
+<h2>手順</h2>
+<h3>1. TABを付与</h3>
 {{- $title := partial "funcSplitTitleWithTab.html" .Title -}}
 <p>{{ replace $title "\t" "<TAB>" }}</p>
 
 {{ $words := split $title "\t"}}
-タブ区切り{{ len $words }}Words</h3>
+タブ区切り{{ len $words }}Words
+
 <ul>
 {{ range $index, $word := $words }}
 <li>Word {{ $index}}: {{ $word }}</li>
@@ -14,7 +21,7 @@
 </ul>
 
 
-<h2>2. 英単語ならばそのまま、そうでなければ分解</h2>
+<h3>2. 英単語ならばそのまま、そうでなければ分解</h3>
 
 <ul>
 {{ range $index, $word := $words }}
@@ -23,31 +30,14 @@
 {{ end }}
 </ul>
 
-<h2>3. 最大文字数まで詰めこむ</h2>
+{{ $maxLength := 30 }}
+<h3>3. 最大文字数（{{$maxLength}}）まで詰めこむ</h3>
 
-{{ $lines := partial "funcGetTitleLines.html" (dict "Title" $title "MaxLength" 30) }}
+{{ $lines := partial "funcGetTitleLines.html" (dict "Title" $title "MaxLength" $maxLength) }}
 
 <ul>
 {{ range $index, $line := $lines }}
-<li>{{$index}}: {{ $line }}</li>
+<li>{{$index}}: {{ $line }} - {{ partial "funcCountChars.html"  $line }}文字</li>
 {{ end }}
 </ul>
 
-<h2>4. 文字のカウント</h2>
-
-{{ $str := "あいうえおabcde" }}
-{{ strings.RuneCount $str }}
-{{ $str | strings.Count  "" }}
-
-
-{{ $count := 0 }}
-
-{{ range $i, $char := split $str "" }}
-    {{ if findRE `[\p{Han}\p{Hiragana}\p{Katakana}]` $char }}
-        {{ $count = add $count 2 }}
-    {{ else if findRE `[a-zA-Z0-9]` $char }}
-        {{ $count = add $count 1 }}
-    {{ end }}
-{{ end }}
-
-<p>合計文字数: {{ $count }}</p>
