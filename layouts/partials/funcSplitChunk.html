@@ -1,6 +1,6 @@
 {{ $chunk := "" }}
 
-{{ if findRE "[a-zA-Z]" .Word }}
+{{ if findRE "^[a-zA-Z].*$" .Word }}
   {{ $chunk = slice .Word }}
 {{ else }}
   {{ $chunk = split .Word "" }}
