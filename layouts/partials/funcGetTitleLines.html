@@ -17,7 +17,9 @@
       {{ $currentLength = add $currentLength $count }}
     {{ else }}
       {{/* 超える場合は現在の行を確定し、新しい行を開始 */}}
-      {{ $lines = $lines | append $currentLine }}
+      {{ if ne $currentLine "" }}
+        {{- $lines = $lines | append $currentLine -}}
+      {{ end }}
       {{ $currentLine = $chunk }}
       {{ $currentLength = $count }}
     {{ end }}
@@ -26,7 +28,7 @@
 
 {{/* 最後の行を追加 */}}
 {{ if ne $currentLine "" }}
-  {{ $lines = $lines | append $currentLine }}
+  {{- $lines = $lines | append $currentLine -}}
 {{ end }}
 
 {{- return $lines -}}
