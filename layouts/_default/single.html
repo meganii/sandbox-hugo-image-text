@@ -4,6 +4,9 @@
 <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
 <img src="{{ $image }}" alt="{{ .Title }}" class="ogp-image" width="600" />
 
+
+{{ .Content }}
+
 {{ partial "func.html" . }}
 
 {{ end }}
