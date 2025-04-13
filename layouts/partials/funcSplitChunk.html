@@ -1,9 +1,9 @@
-{{ $chunk := "" }}
+{{- $chunk := "" -}}
 
-{{ if findRE "^[a-zA-Z0-9- ]+$" .Word }}
-  {{ $chunk = slice .Word }}
-{{ else }}
-  {{ $chunk = split .Word "" }}
-{{ end }}
+{{- if findRE "^[a-zA-Z0-9- ]+$" .Word -}}
+  {{- $chunk = slice .Word -}}
+{{- else -}}
+  {{- $chunk = split .Word "" -}}
+{{- end -}}
 
-{{ return $chunk }}
+{{- return $chunk -}}
