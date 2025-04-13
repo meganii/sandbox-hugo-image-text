@@ -5,15 +5,16 @@
 {{ $title = replaceRE `([\p{Han}\p{Hiragana}\p{Katakana}])([a-zA-Z])` "$1\t$2" .Title }}
 {{ $title = replaceRE `([a-zA-Z])([\p{Han}\p{Hiragana}\p{Katakana}])` "$1\t$2" $title }}
 
-<h2>半角スペースを付与</h2>
-<p> {{ $title }}</p>
+<h2>TABを付与</h2>
+<p>{{- partial "funcSplitTitleWithTab.html" .Title -}}</p>
 
 {{ $words := split $title "\t"}}
-{{ len $words }}
-
+<h3>{{ len $words }}Words</h3>
+<ul>
 {{ range $index, $word := $words }}
-    <p>{{ $index}}行目: {{ $word }}</p>
+<li>{{ $index}}行目: {{ $word }}</li>
 {{ end }}
+</ul>
 
 
 <h2>英単語ならばそのまま、そうでなければ分解</h2>
