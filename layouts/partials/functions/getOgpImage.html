@@ -2,8 +2,8 @@
 
 {{- $font := resources.Get "UDEVGothic-Regular.ttf" }}
 
-{{- $title := partial "funcSplitTitleWithTab.html" .Title -}}
-{{- $lines := partial "funcGetTitleLines.html" (dict "Title" $title "MaxLength" 30) -}}
+{{- $title := partial "functions/splitTitleWithTab.html" .Title -}}
+{{- $lines := partial "functions/getTitleLines.html" (dict "Title" $title "MaxLength" 30) -}}
 {{- $titleText := delimit $lines "\n" -}}
 
 {{- $articleTitle := images.Text $titleText (dict "font" $font "color" "#333" "size" 60 "x" 120 "y" 100 "linespacing" 28) -}}

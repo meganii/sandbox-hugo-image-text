@@ -2,12 +2,12 @@
 
 <h2>文字のカウント</h2>
 
-{{- $count := partial "funcCountChars.html" .Title -}}
+{{- $count := partial "functions/countChars.html" .Title -}}
 <p>タイトルの文字数: {{- $count -}}</p>
 
 <h2>手順</h2>
 <h3>1. TABを付与</h3>
-{{- $title := partial "funcSplitTitleWithTab.html" .Title -}}
+{{- $title := partial "functions/splitTitleWithTab.html" .Title -}}
 <p>{{- replace $title "\t" "<TAB>" -}}</p>
 
 {{- $words := split $title "\t" -}}
@@ -24,7 +24,7 @@
 
 <ul>
 {{- range $index, $word := $words -}}
-{{- $chunk := partial "funcSplitChunk.html" (dict "Word" $word) -}}
+{{- $chunk := partial "functions/splitChunk.html" (dict "Word" $word) -}}
 <li>{{- delimit $chunk " / " -}}</li>
 {{- end -}}
 </ul>
@@ -32,10 +32,10 @@
 {{- $maxLength := 30 -}}
 <h3>3. 最大文字数（{{- $maxLength -}}）まで詰めこむ</h3>
 
-{{- $lines := partial "funcGetTitleLines.html" (dict "Title" $title "MaxLength" $maxLength) -}}
+{{- $lines := partial "functions/getTitleLines.html" (dict "Title" $title "MaxLength" $maxLength) -}}
 
 <ul>
 {{- range $index, $line := $lines -}}
-<li>{{- $index -}}: {{- $line -}} - {{- partial "funcCountChars.html" $line -}}文字</li>
+<li>{{- $index -}}: {{- $line -}} - {{- partial "functions/countChars.html" $line -}}文字</li>
 {{- end -}}
 </ul>
