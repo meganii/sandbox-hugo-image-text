@@ -1,0 +1,23 @@
+{
+  "name": "sandbox-hugo-image-text",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meganii/sandbox-hugo-image-text.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/meganii/sandbox-hugo-image-text/issues"
+  },
+  "homepage": "https://github.com/meganii/sandbox-hugo-image-text#readme",
+  "description": "",
+  "devDependencies": {
+    "prettier": "^3.5.3",
+    "prettier-plugin-go-template": "^0.0.15"
+  }
+}
