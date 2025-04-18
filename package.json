@@ -17,7 +17,9 @@
   "homepage": "https://github.com/meganii/sandbox-hugo-image-text#readme",
   "description": "",
   "devDependencies": {
+    "@tailwindcss/cli": "^4.1.4",
     "prettier": "^3.5.3",
-    "prettier-plugin-go-template": "^0.0.15"
+    "prettier-plugin-go-template": "^0.0.15",
+    "tailwindcss": "^4.1.4"
   }
 }

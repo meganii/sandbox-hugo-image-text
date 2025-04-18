@@ -1,12 +1,19 @@
 {{ define "main" }}
+  {{ $image := partial "functions/getOgpImage.html" . }}
+  <article>
+    <h2 class="text-3xl mb-2">
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </h2>
+    <img
+      src="{{ $image }}"
+      alt="{{ .Title }}"
+      class="ogp-image"
+      width="1200"
+      height="628"
+    />
 
-{{ $image := partial "functions/getOgpImage.html" .}}
-<h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-<img src="{{ $image }}" alt="{{ .Title }}" class="ogp-image" width="600" />
+    {{ .Content }}
 
-
-{{ .Content }}
-
-{{ partial "functions/debug.html" . }}
-
+    {{ partial "functions/debug.html" . }}
+  </article>
 {{ end }}

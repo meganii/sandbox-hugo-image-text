@@ -1,10 +1,21 @@
 {{ define "main" }}
-{{ range .Pages }}
-<article>
-  {{ $image := partial "functions/getOgpImage.html" . }}
-  <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-  <p>{{ .Summary }}</p>
-  <img src="{{ $image }}" alt="{{ .Title }}" class="ogp-image" width="600" />
-</article>
-{{ end }}
+  {{ range .Pages }}
+    <article class="mb-10">
+      {{ $image := partial "functions/getOgpImage.html" . }}
+      <h2
+        class="text-2xl
+      "
+      >
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      </h2>
+      <p>{{ .Summary }}</p>
+      <img
+        src="{{ $image }}"
+        alt="{{ .Title }}"
+        class="ogp-image"
+        width="1200"
+        height="628"
+      />
+    </article>
+  {{ end }}
 {{ end }}

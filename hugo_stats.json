@@ -1,0 +1,40 @@
+{
+  "htmlElements": {
+    "tags": [
+      "a",
+      "article",
+      "body",
+      "footer",
+      "h2",
+      "h3",
+      "head",
+      "header",
+      "html",
+      "img",
+      "li",
+      "main",
+      "meta",
+      "p",
+      "pre",
+      "script",
+      "title",
+      "ul"
+    ],
+    "classes": [
+      "bg-gray-100",
+      "container",
+      "font-sans",
+      "mb-10",
+      "mb-2",
+      "mx-auto",
+      "ogp-image",
+      "px-60",
+      "py-10",
+      "text-2xl",
+      "text-3xl",
+      "text-4xl",
+      "text-gray-900"
+    ],
+    "ids": null
+  }
+}
