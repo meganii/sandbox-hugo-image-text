@@ -24,15 +24,16 @@
       "bg-gray-100",
       "container",
       "font-sans",
+      "lg:px-60",
       "mb-10",
       "mb-2",
+      "md:px-60",
       "mx-auto",
       "ogp-image",
+      "post",
       "px-60",
       "py-10",
       "text-2xl",
-      "text-3xl",
-      "text-4xl",
       "text-gray-900"
     ],
     "ids": null

@@ -1,7 +1,7 @@
 {{ define "main" }}
   {{ $image := partial "functions/getOgpImage.html" . }}
-  <article>
-    <h2 class="text-3xl mb-2">
+  <article class="post">
+    <h2 class="mb-2">
       <a href="{{ .RelPermalink }}">{{ .Title }}</a>
     </h2>
     <img
