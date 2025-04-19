@@ -16,7 +16,6 @@
       "meta",
       "p",
       "pre",
-      "script",
       "title",
       "ul"
     ],
@@ -27,11 +26,9 @@
       "lg:px-60",
       "mb-10",
       "mb-2",
-      "md:px-60",
       "mx-auto",
       "ogp-image",
       "post",
-      "px-60",
       "py-10",
       "text-2xl",
       "text-gray-900"
